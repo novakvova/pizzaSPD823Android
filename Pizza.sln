@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30503.244
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pizza.WebApi", "Pizza.WebApi\Pizza.WebApi.csproj", "{CC51455C-A14D-4137-BA5B-6EBB87C8D6B1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CC51455C-A14D-4137-BA5B-6EBB87C8D6B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC51455C-A14D-4137-BA5B-6EBB87C8D6B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC51455C-A14D-4137-BA5B-6EBB87C8D6B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC51455C-A14D-4137-BA5B-6EBB87C8D6B1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {159AEE87-E938-4BB5-AB5F-5E03F9D655C9}
+	EndGlobalSection
+EndGlobal
