@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         imageRequester = ImageRequester.getInstance();
         editImage = findViewById(R.id.chooseImage);
-        imageRequester.setImageFromUrl(editImage,"https://www.regionnews.net.ua/wp-content/uploads/2019/12/zhinky-2.jpg");
+        imageRequester.setImageFromUrl(editImage,"http://10.0.2.2:61937/UserImages/1.png");
     }
     public void onButtonClickTest(View view) {
         Toast toast = Toast.makeText(getApplicationContext(), "Привіт Валера",
