@@ -10,8 +10,8 @@ using Pizza.WebApi.Entities;
 namespace Pizza.WebApi.Migrations
 {
     [DbContext(typeof(EFContext))]
-    [Migration("20201010115559_Init database")]
-    partial class Initdatabase
+    [Migration("20201013150602_new table migration")]
+    partial class newtablemigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

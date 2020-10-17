@@ -4,7 +4,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Pizza.WebApi.Migrations
 {
-    public partial class Initdatabase : Migration
+    public partial class newtablemigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

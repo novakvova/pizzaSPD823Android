@@ -9,11 +9,11 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.testbutton.network.Login;
 import com.example.testbutton.network.NetworkService;
+import com.example.testbutton.network.SessionManager;
 import com.example.testbutton.network.Tokens;
 import com.example.testbutton.network.utils.CommonUtils;
 import com.google.android.material.textfield.TextInputEditText;
@@ -30,19 +30,19 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
     }
 
-    public void saveJWTToken(String token) {
-        SharedPreferences prefs;
-        SharedPreferences.Editor edit;
-        prefs = this.getSharedPreferences("jwtStore", Context.MODE_PRIVATE);
-        edit = prefs.edit();
-        try {
-            edit.putString("token", token);
-            Log.i("Login", token);
-            edit.commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+//    public void saveJWTToken(String token) {
+//        SharedPreferences prefs;
+//        SharedPreferences.Editor edit;
+//        prefs = this.getSharedPreferences("jwtStore", Context.MODE_PRIVATE);
+//        edit = prefs.edit();
+//        try {
+//            edit.putString("token", token);
+//            Log.i("Login", token);
+//            edit.commit();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     public void click(View v) {
         final TextInputEditText password = findViewById(R.id.input_password);
@@ -52,7 +52,7 @@ public class LoginActivity extends AppCompatActivity {
 //        } else {
 ////            passwordLayout.setError("");
 //        }
-        Login m = new Login();
+        final Login m = new Login();
         m.setEmail(email.getText().toString());
         m.setPassword(password.getText().toString());
         CommonUtils.showLoading(this);
@@ -65,25 +65,28 @@ public class LoginActivity extends AppCompatActivity {
                         CommonUtils.hideLoading();
                         if (response.errorBody() == null && response.isSuccessful()) {
                             Tokens post = response.body();
+                            assert post != null;
+                            SessionManager sessionManager = SessionManager.getInstance(LoginActivity.this);
+
+                            sessionManager.saveJWTToken(post.getToken());
+                            sessionManager.saveUserLogin(m.getEmail());
                             Log.e("Hello", post.getToken());
-                            saveJWTToken(post.getToken());
-                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                            startActivity(intent);
+                            Intent intent = new Intent(LoginActivity.this, ProfileActivity.class);
+                            startActivity(intent.putExtra("token", post.getToken()));
                         } else {
-                            String problem = "Not valid user";
-                            //emailLayout.setError("");
-                            //password.setError("Login or password was wrong");
-                            //CommonUtils.hideLoading();
-                            //passwordLayout.setError("Login or password was wrong");
-                            //loginButton.setError("Login or password was wrong");
+                            String error = "Login invalid!!!";
+                            Toast toast = Toast.makeText(getApplicationContext(),
+                                    error, Toast.LENGTH_LONG);
+                            toast.show();
                         }
-
                     }
-
                     @Override
                     public void onFailure(@NonNull Call<Tokens> call, @NonNull Throwable t) {
                         CommonUtils.hideLoading();
-                        //textView.append("Error occurred while getting request!");
+                        String error = "Error occurred while getting request!";
+                        Toast toast = Toast.makeText(getApplicationContext(),
+                                error, Toast.LENGTH_LONG);
+                        toast.show();
                         t.printStackTrace();
                     }
                 });

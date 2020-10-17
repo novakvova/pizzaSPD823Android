@@ -36,7 +36,6 @@ namespace Pizza.WebApi.Entities
 
 
             var email = "admin@gmail.com";
-
             var findUser = userManager.FindByEmailAsync(email).Result;
             if (findUser == null)
             {
