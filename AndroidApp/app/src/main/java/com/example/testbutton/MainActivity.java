@@ -52,6 +52,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void btnShowList(View v) {
+        Intent intent = new Intent(this, NewsActivity.class);
+        startActivity(intent);
+    }
+
     public void TestGet(View v) {
         NetworkService.getInstance()
                 .getJSONApi()
