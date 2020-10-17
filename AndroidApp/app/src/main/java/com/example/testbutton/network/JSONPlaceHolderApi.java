@@ -2,6 +2,8 @@ package com.example.testbutton.network;
 
 import com.example.testbutton.model.UserView;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -19,5 +21,8 @@ public interface JSONPlaceHolderApi {
     Call<UserView> profile();
     ///@POST("/api/auth/refresh")
     ///public Call<Tokens> refresh(@Body Refresh m);
+
+    @GET ("api/profile/users")
+    Call<List<UserView>> list();
 
 }

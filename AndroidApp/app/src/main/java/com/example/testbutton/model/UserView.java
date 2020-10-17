@@ -20,6 +20,10 @@ public class UserView {
     @Expose
     private String description;
 
+    @SerializedName("image")
+    @Expose
+    private String image;
+
     public String getEmail() {
         return email;
     }
@@ -50,5 +54,13 @@ public class UserView {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

@@ -28,5 +28,14 @@ namespace Pizza.WebApi.Controllers
             var user = await _userManager.FindByNameAsync(userName);
             return Ok(user);
         }
+
+        [HttpGet("users")]
+        public async Task<IActionResult> users()
+        {
+            var users = _userManager.Users.ToList();
+            return Ok(users);
+        }
     }
+
+
 }
